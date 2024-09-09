@@ -8,7 +8,7 @@ def get_schedule(day_name):
     wb = load_workbook("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
 
     # Выбор активного листа
-    ws = wb.active
+    ws = wb['09.09-14.09 четн нед']
 
     # Преобразование букв столбцов в числовые индексы
     def column_letter_to_number(column_letter):
