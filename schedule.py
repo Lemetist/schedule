@@ -6,11 +6,14 @@ from slud_download import download_file
 def wb_name():
     wb = load_workbook("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
     raspis = wb.sheetnames
+    print(raspis)
     raspis = [item.rstrip() for item in raspis]
     return raspis
 
 
+
 def get_schedule(day_name,schedule_name):
+
     download_file()
     # Загрузка существующего файла
     wb = load_workbook("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")

@@ -51,14 +51,20 @@ def handle_slud(message):
 def handle_day(message):
     global schedule_name
     day_name = message.text
-    schedule_data = get_schedule(day_name,schedule_name)
+    schedule_data = get_schedule(day_name,add_space_after_nechet_ned(schedule_name))
     bot.reply_to(message, schedule_data)
+def add_space_after_nechet_ned(text):
+    if text.endswith("нечет нед"):
+        return text + ' '  # Добавляем пробел
+    return text
 
 # Обработчик текстовых сообщений для расписания
 @bot.message_handler(func=lambda message: message.text in raspis)
 def handle_schedule(message):
     global schedule_name
     schedule_name = message.text
+    print(schedule_name)
+
     bot.reply_to(message, f"Расписание для {schedule_name}")
 
 # Запуск бота
