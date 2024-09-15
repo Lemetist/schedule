@@ -2,6 +2,12 @@ from openpyxl import load_workbook
 import openpyxl
 from slud_download import download_file
 
+
+def wb_name():
+    wb = load_workbook("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
+    return wb.sheetnames
+
+
 def get_schedule(day_name):
     download_file()
     # Загрузка существующего файла
@@ -26,10 +32,10 @@ def get_schedule(day_name):
     for row in range(min_row, max_row + 1):
         fv_cell = ws.cell(row=row, column=min_col_FV)
         fx_cell = ws.cell(row=row, column=min_col_FX)
-        
+
         fv_value = fv_cell.value if fv_cell.value is not None else "Не указано"
         fx_value = fx_cell.value if fx_cell.value is not None else "Не указано"
-        
+
         data_combined.append([fv_value, fx_value])
 
     # Функция для разбиения данных на блоки по 6 записей
@@ -49,7 +55,7 @@ def get_schedule(day_name):
             time = times[index] if index < len(times) else "Не указано"
             emoji = emojis[index] if index < len(emojis) else ""
             formatted_schedule.append(f"{emoji} {time} : {subject} ({teacher})")
-        
+
         return f"Расписание на {day_name}:\n" + "\n".join(formatted_schedule)
 
     # Дни недели для расписания
@@ -63,3 +69,4 @@ def get_schedule(day_name):
     day_data = data_by_days[day_index] if day_index < len(data_by_days) else []
 
     return format_schedule(day_data, day_name)
+print(wb_name())

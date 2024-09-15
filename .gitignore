@@ -2,3 +2,5 @@ paspisanie
 __pycache__
 .env
 **schedule
+.idea
+**.xlsx
