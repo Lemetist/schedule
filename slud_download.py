@@ -1,5 +1,4 @@
 import requests
-import schedule
 
 
 def download_file():
