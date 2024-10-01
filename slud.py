@@ -1,3 +1,5 @@
+import time
+
 import telebot
 import os
 from dotenv import load_dotenv
@@ -5,7 +7,7 @@ import logging
 from telebot import types
 from schedule import get_schedule, wb_name
 from utils import add_space_after_nechet_ned
-
+from slud_download  import download_file
 logging.basicConfig(level=logging.INFO)
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
@@ -54,3 +56,7 @@ def handle_schedule(message):
     bot.reply_to(message, f"Расписание для {schedule_name}")
 
 bot.polling(none_stop=True)
+
+while True:
+    download_file()
+    time.sleep(2*60*60) #таймер скачивания файла
