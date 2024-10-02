@@ -13,7 +13,7 @@ def get_schedule(day_name, schedule_name):
         return "Расписание не найдено"
 
     # Чтение конкретного листа в DataFrame
-    df = pd.read_excel(wb, sheet_name=closest_sheet_name, usecols='FV:FX', skiprows=6, nrows=36)
+    df = pd.read_excel(wb, sheet_name=closest_sheet_name, usecols='FV,FX', skiprows=6, nrows=36)
 
     # Преобразование всех столбцов в тип object
     df = df.astype(object)
@@ -23,7 +23,6 @@ def get_schedule(day_name, schedule_name):
 
     # Разделение DataFrame на блоки по 6 строк
     data_by_days = [df.iloc[i:i + 6].values.tolist() for i in range(0, len(df), 6)]
-
     # Функция для форматирования расписания
     def format_schedule(day_data, day_name):
         formatted_schedule = []
@@ -31,11 +30,11 @@ def get_schedule(day_name, schedule_name):
         emojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"]
 
         for index, row in enumerate(day_data):
-            subject = row[0] if len(row) > 0 else "Не указано"
-            teacher = row[1] if len(row) > 1 else "Не указано"
-            time = times[index] if index < len(times) else "Не указано"
+            subject = row[0]
+            room = row[1]
+            time = times[index] if index < len(times) else ""
             emoji = emojis[index] if index < len(emojis) else ""
-            formatted_schedule.append(f"{emoji} {time} : {subject} ({teacher})")
+            formatted_schedule.append(f"{emoji} {time} : {subject}  ({room})")
 
         return f"Расписание на {day_name}:\n" + "\n".join(formatted_schedule)
 
