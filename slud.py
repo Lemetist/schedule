@@ -46,7 +46,7 @@ def handle_day(message):
         except KeyError:
             schedule_data = "Расписание не найдено"
     else:
-        schedule_data = "Расписание не выбрано"
+        schedule_data = "Расписание не выбрано /slud"
     bot.reply_to(message, schedule_data)
 
 @bot.message_handler(func=lambda message: message.text in raspis)
