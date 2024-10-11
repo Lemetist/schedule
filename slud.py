@@ -57,6 +57,14 @@ def handle_schedule(message):
 
 bot.polling(none_stop=True)
 
+@bot.message_handler(commands=['download'])
+def handle_download(message):
+    try:
+        download_file()
+        bot.reply_to(message, "Файл успешно скачан.")
+    except Exception as e:
+        bot.reply_to(message, f"Ошибка при скачивании файла: {e}")
+
 while True:
     download_file()
     time.sleep(2*60*60) #таймер скачивания файла
