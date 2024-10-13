@@ -1,11 +1,11 @@
+import schedule
 import time
-
 import telebot
 import os
 from dotenv import load_dotenv
 import logging
 from telebot import types
-from schedule import get_schedule, wb_name
+from schedule_forms import get_schedule, wb_name
 from utils import add_space_after_nechet_ned
 from slud_download  import download_file
 logging.basicConfig(level=logging.INFO)
@@ -65,6 +65,10 @@ def handle_download(message):
     except Exception as e:
         bot.reply_to(message, f"Ошибка при скачивании файла: {e}")
 
+schedule.every(2).hours.do(download_file)
+
 while True:
-    download_file()
-    time.sleep(2*60*60) #таймер скачивания файла
+    schedule.run_pending()
+    time.sleep(1)
+
+
