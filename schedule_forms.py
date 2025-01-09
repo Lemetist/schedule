@@ -5,6 +5,8 @@ def wb_name():
     wb = pd.ExcelFile("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
     return [add_space_after_nechet_ned(item.strip()) for item in wb.sheet_names]
 
+
+
 def get_schedule(day_name, schedule_name):
     # Загрузка Excel файла
     wb = pd.ExcelFile("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
@@ -23,7 +25,7 @@ def get_schedule(day_name, schedule_name):
 
     # Разделение DataFrame на блоки по 6 строк
     data_by_days = [df.iloc[i:i + 6].values.tolist() for i in range(0, len(df), 6)]
-    print(data_by_days)
+
 
     # Функция для форматирования расписания
     def format_schedule(day_data, day_name):
@@ -37,7 +39,6 @@ def get_schedule(day_name, schedule_name):
             time = times[index] if index < len(times) else ""
             emoji = emojis[index] if index < len(emojis) else ""
             formatted_schedule.append(f"{emoji} {time} : {subject}  ({room})")
-            print (formatted_schedule)
         return f"Расписание на {day_name}:\n" + "\n".join(formatted_schedule)
 
     # Дни недели для расписания

@@ -17,7 +17,6 @@ def download_file():
         file_path = f'{doc_id}.xlsx'
         with open(file_path, 'wb') as f:
             f.write(response.content)
-        print(f'Файл сохранен как {file_path}')
     else:
         print(f'Ошибка загрузки файла: {response.status_code}')
 
