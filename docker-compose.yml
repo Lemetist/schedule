@@ -1,0 +1,10 @@
+services:
+  schedule:
+    image: schedule
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: schedule
+    restart: always
+    ports:
+      - "5000:5000"
