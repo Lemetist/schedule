@@ -16,8 +16,10 @@ if not TOKEN:
     raise ValueError("Токен отсутствует в переменных окружения")
 
 bot = telebot.TeleBot(TOKEN)
+download_file()
 raspis = wb_name()
 schedule_name = None
+
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
