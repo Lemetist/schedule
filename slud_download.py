@@ -3,7 +3,7 @@ import requests
 
 def download_file():
     # ID документа Google Sheets
-    doc_id = "1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m"
+    doc_id = "1PtRes1tt6fDTc34EtTLN03NizjNZwxWk"
 
     # URL для экспорта таблицы в формате Excel
     url = f'https://docs.google.com/spreadsheets/d/{doc_id}/export?format=xlsx'
@@ -20,5 +20,5 @@ def download_file():
     else:
         print(f'Ошибка загрузки файла: {response.status_code}')
 
-
+download_file()
 
