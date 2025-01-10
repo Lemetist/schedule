@@ -1,11 +1,12 @@
 import pandas as pd
 from utils import add_space_after_nechet_ned, find_closest_sheet_name
+from slud_download import doc_id
 
 def wb_name():
-    wb = pd.ExcelFile("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
-    return [add_space_after_nechet_ned(item.strip()) for item in wb.sheet_names]
-
-
+    wb = pd.ExcelFile(f"{doc_id}.xlsx")
+    sheet_names = [add_space_after_nechet_ned(item.strip()) for item in wb.sheet_names]
+    print(f"Sheet names: {sheet_names}")
+    return sheet_names
 
 def get_schedule(day_name, schedule_name):
     # Загрузка Excel файла
