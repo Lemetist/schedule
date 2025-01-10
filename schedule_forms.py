@@ -10,7 +10,7 @@ def wb_name():
 
 def get_schedule(day_name, schedule_name):
     # Загрузка Excel файла
-    wb = pd.ExcelFile("1S3kj0zo_QDERJu7O2QU1J4gMRx-K381m.xlsx")
+    wb = pd.ExcelFile(f"{doc_id}.xlsx")
     closest_sheet_name = find_closest_sheet_name(wb.sheet_names, schedule_name)
     if not closest_sheet_name:
         return "Расписание не найдено"
