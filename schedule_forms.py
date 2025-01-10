@@ -16,7 +16,7 @@ def get_schedule(day_name, schedule_name):
         return "Расписание не найдено"
 
     # Чтение конкретного листа в DataFrame
-    df = pd.read_excel(wb, sheet_name=closest_sheet_name, usecols='FV,FX', skiprows=6, nrows=36)
+    df = pd.read_excel(wb, sheet_name=closest_sheet_name, usecols='EX,EZ', skiprows=6, nrows=36)
 
     # Преобразование всех столбцов в тип object
     df = df.astype(object)
