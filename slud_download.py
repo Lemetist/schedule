@@ -1,9 +1,9 @@
 import requests
 
+# ID документа Google Sheets
+doc_id = "1PtRes1tt6fDTc34EtTLN03NizjNZwxWk"
 
 def download_file():
-    # ID документа Google Sheets
-    doc_id = "1PtRes1tt6fDTc34EtTLN03NizjNZwxWk"
 
     # URL для экспорта таблицы в формате Excel
     url = f'https://docs.google.com/spreadsheets/d/{doc_id}/export?format=xlsx'
